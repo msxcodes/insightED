@@ -30,7 +30,13 @@ const transcribeWithYouTubeAPI = async (videoUrl) => {
 
     const html = await retry(async () => {
       const response = await fetch(
-        `https://www.youtube.com/watch?v=${videoId}`
+        `https://www.youtube.com/watch?v=${videoId}`,
+        {
+          headers: {
+            "User-Agent":
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+          },
+        }
       );
       if (!response.ok) throw new Error("Failed to fetch YouTube page");
       return await response.text();
