@@ -1,10 +1,9 @@
 import { Server } from "socket.io";
 import { createAdapter } from "@socket.io/cluster-adapter";
 import { setupWorker } from "@socket.io/sticky";
-import rateLimit from "express-rate-limit";
 
 let io;
-const clients = new WeakMap();
+const clients = new Map();
 
 const initWebSocket = (server, isWorker = false) => {
   io = new Server(server, {
@@ -56,6 +55,7 @@ const sendWebSocketUpdate = (clientIdOrEvent, eventOrData, data = null) => {
   }
 
   if (data !== null) {
+    // Using Map.get() to retrieve the socket ID
     const socketId = clients.get(clientIdOrEvent);
     if (socketId) {
       io.to(socketId).emit(eventOrData, data);

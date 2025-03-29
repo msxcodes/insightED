@@ -6,9 +6,12 @@ import { sendWebSocketUpdate } from "../utils/websocket.js";
 
 const summaryController = async (req, res) => {
   const processStart = Date.now();
+  let clientId;
 
   try {
-    const { youtubeUrl, isPremium = "false", clientId } = req.body;
+    const { youtubeUrl, isPremium = "false" } = req.body;
+    clientId = req.body.clientId;
+
     console.log("Request body:", req.body);
     if (!youtubeUrl)
       return res.status(400).json({ error: "Missing YouTube URL" });
@@ -65,13 +68,15 @@ const summaryController = async (req, res) => {
       },
     });
   } catch (error) {
-    sendWebSocketUpdate(clientId, "error", {
-      message: "An error occurred during processing",
-      details:
-        process.env.NODE_ENV === "development"
-          ? error.message
-          : "Internal Server Error",
-    });
+    if (clientId) {
+      sendWebSocketUpdate(clientId, "error", {
+        message: "An error occurred during processing",
+        details:
+          process.env.NODE_ENV === "development"
+            ? error.message
+            : "Internal Server Error",
+      });
+    }
 
     const errorDetails = {
       message: error.message,
