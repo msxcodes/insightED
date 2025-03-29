@@ -2,8 +2,8 @@ import cluster from "node:cluster";
 import { cpus } from "node:os";
 import http from "http";
 import app from "./app.js";
-import { Server } from "socket.io"; // Add this import
-import { setupMaster, setupWorker } from "@socket.io/sticky";
+import { initWebSocket } from "./utils/websocket.js"; 
+import { setupMaster } from "@socket.io/sticky";
 import { createAdapter } from "@socket.io/cluster-adapter";
 import "dotenv/config";
 
@@ -14,20 +14,16 @@ const numWorkers = isProduction ? cpus().length : 1;
 if (cluster.isPrimary) {
   console.log(`\n🚀 Primary process ${process.pid} started\n`);
 
-  // Create a server for the primary process
   const httpServer = http.createServer();
 
-  // Set up sticky session handler
   setupMaster(httpServer, {
     loadBalancingMethod: "least-connection",
   });
 
-  // Listen on the specified port
   httpServer.listen(PORT, () => {
     console.log(`\n🔌 Primary process listening on port ${PORT}\n`);
   });
 
-  // Fork workers
   for (let i = 0; i < numWorkers; i++) {
     cluster.fork();
   }
@@ -73,29 +69,10 @@ if (cluster.isPrimary) {
   process.on("SIGINT", handleShutdown);
   process.on("SIGTERM", handleShutdown);
 } else {
-  // Create server with Express app
   const server = http.createServer(app);
 
-  // Initialize WebSockets
-  const io = new Server(server, {
-    cors: {
-      origin: "*",
-    },
-    adapter: createAdapter(),
-  });
+  initWebSocket(server, true);
 
-  // Setup worker for socket.io
-  setupWorker(io);
-
-  io.on("connection", (socket) => {
-    console.log(`Client connected: ${socket.id}`);
-
-    socket.on("disconnect", () => {
-      console.log(`Client disconnected: ${socket.id}`);
-    });
-  });
-
-  // Listen on random port
   server.listen(0, () => {
     console.log(
       `\n👷 Worker ${process.pid} | Port: ${server.address().port} | Env: ${
