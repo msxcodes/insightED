@@ -8,7 +8,7 @@ import "dotenv/config";
 
 const app = express();
 
-app.set('trust proxy', 1);
+app.set("trust proxy", 1);
 app.use(helmet());
 app.use(compression());
 
@@ -18,7 +18,7 @@ const corsOrigins = process.env.CORS_ORIGIN
 
 app.use(
   cors({
-    origin: corsOrigins,
+    origin: "*",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
