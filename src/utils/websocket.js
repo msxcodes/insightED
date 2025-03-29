@@ -9,7 +9,7 @@ const clients = new WeakMap();
 const initWebSocket = (server, isWorker = false) => {
   io = new Server(server, {
     cors: {
-      origin: process.env.CORS_ORIGINS || "*",
+      origin: "*",
       methods: ["GET", "POST"],
     },
     adapter: createAdapter(),
