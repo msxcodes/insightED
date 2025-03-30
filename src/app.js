@@ -14,13 +14,18 @@ app.use(compression());
 
 const corsOrigins = process.env.CORS_ORIGIN
   ? process.env.CORS_ORIGIN.split(",")
-  : [];
+  : ["http://localhost:3000"];
 
 app.use(
   cors({
-    origin: "*",
+    origin: (origin, callback) => {
+      if (!origin || corsOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error("Not allowed by CORS"));
+    },
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
@@ -36,6 +41,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.options("*", cors());
 app.use("/api/v1", summaryRoutes);
 
 app.use((err, req, res, next) => {
