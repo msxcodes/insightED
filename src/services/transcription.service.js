@@ -15,7 +15,7 @@ const extractVideoId = (url) => {
 async function fetchFreeProxies() {
   try {
     const response = await fetch(
-      "https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all&simplified=true"
+      "https://api.proxyscrape.com/v2/?request=displayproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all"
     );
     if (!response.ok) throw new Error("Failed to fetch proxies");
 
@@ -45,7 +45,7 @@ const getProxy = () => {
   return proxyList[Math.floor(Math.random() * proxyList.length)];
 };
 
-async function retryWithProxies(fn, retries = 3, delay = 1000) {
+async function retryWithProxies(fn, retries = 30, delay = 1000) {
   for (let attempt = 0; attempt < retries; attempt++) {
     try {
       return await fn();

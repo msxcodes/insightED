@@ -10,6 +10,7 @@ package-lock.json
 # testing
 /coverage
 /tests
+/websocket-test.html
 
 # next.js
 /.next/
@@ -29,6 +30,7 @@ yarn-debug.log*
 yarn-error.log*
 error.log
 combined.log
+/logs/*
 
 # local env files
 .env*.local

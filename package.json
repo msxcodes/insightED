@@ -43,6 +43,7 @@
     "node-cache": "^5.1.2",
     "path": "^0.12.7",
     "socket.io": "^4.8.1",
+    "socks-proxy-agent": "^8.0.5",
     "uuid": "^11.1.0",
     "winston": "^3.17.0",
     "winston-daily-rotate-file": "^5.0.0",
