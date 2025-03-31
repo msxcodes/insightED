@@ -108,19 +108,6 @@ Extracts and summarizes a YouTube video.
 
 ---
 
-## 🖼️ Screenshots *(Add actual images)*
-
-1️⃣ **User Inputs YouTube Link**  
-![Step 1](#)
-
-2️⃣ **Summary & MCQs Generated**  
-![Step 2](#)
-
-3️⃣ **Firebase Storage View**  
-![Step 3](#)
-
----
-
 ## 🏗️ Deployment
 
 ### Deploy on **Vercel / Railway / Render**
