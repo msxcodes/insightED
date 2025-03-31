@@ -1,0 +1,27 @@
+services:
+- type: web
+  name: insighted-server
+  runtime: docker
+  repo: https://github.com/anand-mukul/insighted-backend
+  plan: free
+  envVars:
+  - key: LOG_LEVEL
+    sync: false
+  - key: OPENAI_API_KEY
+    sync: false
+  - key: CORS_ORIGINS
+    sync: false
+  - key: FIREBASE_SERVICE_ACCOUNT
+    sync: false
+  - key: NODE_ENV
+    sync: false
+  - key: GEMINI_API_KEY
+    sync: false
+  - key: FIREBASE_BUCKET
+    sync: false
+  - key: PORT
+    sync: false
+  region: singapore
+  dockerContext: .
+  dockerfilePath: ./Dockerfile
+version: "1"
