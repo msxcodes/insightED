@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📌 InsightEd - AI-Powered YouTube Video Summarizer
 
-## Getting Started
+🚀 **InsightEd** is a powerful AI-driven tool that extracts key insights from YouTube videos or uploaded videos by generating **summaries** and **MCQ test series** for instant evaluation. Built as a great help for **students**, it ensures speed, scalability, and real-time updates using **WebSockets**.
 
-First, run the development server:
+## 🔥 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- 🎯 **Summarizes YouTube Videos** - Get concise and insightful summaries.
+- 🤖 **AI-Powered MCQs** - Generate quiz questions for learning reinforcement.
+- 📡 **Real-time Updates** - Stay informed with WebSocket notifications.
+- ☁️ **Cloud Storage** - Summaries are stored securely on Firebase.
+- 💡 **Scalable & Fast** - Optimized with microservices and async processing.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js
+- **Backend**: Node.js, Express.js
+- **AI Processing**: Google Gemini API, OpenAI API
+- **Storage**: Firebase Cloud Storage
+- **WebSockets**: Socket.io
+- **Microservices**: Docker
+
+---
+
+## 🎬 How It Works
+
+1️⃣ **User Inputs YouTube Link / Uploads Video**  
+2️⃣ **Backend Downloads & Extracts Audio**  
+3️⃣ **Transcription & AI Summarization**  
+4️⃣ **MCQ Quiz Generation Using AI**  
+5️⃣ **Data is Stored on Firebase**  
+6️⃣ **User Receives Summary & MCQs**  
+7️⃣ **Downloadable Summary in PDF Format**  
+
+---
+## 🚀 Getting Started With Frontend
+
+### 1️⃣ Clone the Repository
+
+```sh
+git clone https://github.com/msxcodes/insightED.git
+cd insightED
+cd insightEd-frontend
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2️⃣ Install Dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+npm install
+```
+### 4️⃣ Configure Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a `.env` file in the root directory and add:
 
-## Learn More
+```ini
+NEXT_PUBLIC_API_URL=http://localhost:5000
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 3️⃣ Start the Server
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```sh
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Deploy on **Vercel / Railway / Render**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1️⃣ Add environment variables in the hosting platform.
+
+2️⃣ Deploy the frontend.
+
+3️⃣ Update the frontend to match the API URL.
+
+---
+
+## 🏆 Why InsightEd? (Problem Solving)
+
+✅ **Perfect for Students & Educators** - Converts long videos into easy notes.  
+✅ **Time-Saving** - Get summaries instantly.  
+✅ **Hackathon-Ready** - Built for scalability and real-time use.  
+✅ **Future-Ready** - Can integrate with LMS platforms.  
+
+---
+
+## 💡 Future Plans:
+
+🔹 **Multi-Language Support**   
+🔹 **Live Transcription & Summarization**   
+🔹 **Freemium Model**   
+🔹 **Affiliate & Partner Integrations**   
+🔹**Mobile App**
+
+## 📬 Team Info
+
+👨‍💻 MegaMinds: [Mukul-Anand](https://github.com/anand-mukul), [Mohit-Singh](https://github.com/msxcodes), [Mrinal-Kumar](https://github.com/Darklord-41), [Shivangi-Kumari](https://github.com/Shivangi033)
+
+🚀 **Let’s revolutionize learning together!**
