@@ -31,7 +31,7 @@
 5️⃣ **Data is Stored on Firebase**  
 6️⃣ **User Receives Summary & MCQs**  
 
-![Workflow Diagram](#) *(Insert architecture diagram here)*
+
 
 ---
 
@@ -129,10 +129,8 @@ Extracts and summarizes a YouTube video.
 
 ---
 
-## 📬 Contact & Contribution
+## 📬 Team Info
 
-💡 Got an idea? Found a bug? Feel free to open an issue or contribute!  
-👨‍💻 Maintainer: [Mukul Anand](https://github.com/anand-mukul)  
-✉️ Email: <mukulanand.dev@gmail.com>  
+👨‍💻 MegaMinds: [Mukul-Anand](https://github.com/anand-mukul), [Mohit-Singh](https://github.com/msxcodes), [Mrinal-Kumar](https://github.com/Darklord-41), [Shivangi-Kumari](https://github.com/Shivangi033)  
 
 🚀 **Let’s revolutionize learning together!**
